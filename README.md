@@ -107,4 +107,7 @@ git push origin main
 - Support for additional compression formats.
 
 ## 👨‍💻 Contributors
-@Nei tong
+Keo Hengneitong
+Man Arafat
+Ly Senghai
+Rith Seyhak
