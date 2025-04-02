@@ -10,18 +10,15 @@ if [ ! -e "$source" ]; then
 fi
 
 # Prompt for backup destination
-read -p "Enter the backup destination: " backup_dest"
-
-# Fix: Remove the extra double quote
 read -p "Enter the backup destination: " backup_dest
 
 # Ensure backup directory exists
 mkdir -p "$backup_dest"
 
-# Generate a unique backup name
+# Generate a unique backup name to avoid overwriting existing backups
 backup_name="$(basename "$source")_backup_$(date +%Y%m%d%H%M%S)"
 
-# Perform backup
+# Copy the file or directory to the backup destination
 if cp -r "$source" "$backup_dest/$backup_name"; then
     echo "Backup successful: $backup_dest/$backup_name"
 else
