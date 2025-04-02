@@ -1,14 +1,13 @@
 #!/bin/bash
-
-LOG_FILE="script.log"
+source "$(dirname "$0")/../log.sh"
 
 # Prompt for source file/directory
 read -p "Enter the file or directory to backup: " source
 
 # Check if source exists
 if [ ! -e "$source" ]; then
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - Error: Source file/directory does not exist." >> "$LOG_FILE"
     echo "Error: Source file/directory does not exist."
+    log_action "Backup failed: Source file/directory does not exist."
     exit 1
 fi
 
@@ -23,10 +22,10 @@ backup_name="$(basename "$source")_backup_$(date +%Y%m%d%H%M%S)"
 
 # Copy the file or directory to the backup destination
 if cp -r "$source" "$backup_dest/$backup_name"; then
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - Backup successful: $backup_dest/$backup_name" >> "$LOG_FILE"
     echo "Backup successful: $backup_dest/$backup_name"
+    log_action "Backup successful: $backup_dest/$backup_name"
 else
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - Error: Backup failed." >> "$LOG_FILE"
     echo "Error: Backup failed."
+    log_action "Backup failed."
     exit 1
 fi
