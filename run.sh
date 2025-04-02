@@ -1,6 +1,9 @@
 #!/bin/bash
 
 while(true); do
+	echo "=============================="
+	echo "   File & Directory Manager"
+	echo "=============================="
 	echo "1. List Files"
 	echo "2. Backup Files"
 	echo "3. Count Files"
@@ -8,6 +11,7 @@ while(true); do
 	echo "5. Search Files"
 	echo "6. Compress Files"
 	echo "7. Exit"
+	echo "=============================="
 	read -p "Choose an option: " choice
 
 	case $choice in
