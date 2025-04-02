@@ -12,6 +12,9 @@ fi
 # Prompt for backup destination
 read -p "Enter the backup destination: " backup_dest"
 
+# Fix: Remove the extra double quote
+read -p "Enter the backup destination: " backup_dest
+
 # Ensure backup directory exists
 mkdir -p "$backup_dest"
 
