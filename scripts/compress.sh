@@ -2,11 +2,20 @@
 source "$(dirname "$0")/../log.sh"
 
 read -p "Enter the file or directory to compress: " source
-read -p "Enter the destination (including filename, e.g., backup.tar.gz): " dest
 
+# Check if the source input is empty.
 if [ ! -e "$source" ]; then
     echo "Error: Source file/directory does not exist."
     log_action "Compression failed: Source file/directory '$source' does not exist."
+    exit 1
+fi
+
+read -p "Enter the destination (including filename, e.g., backup.tar.gz): " dest
+
+# Check if the destination input is empty.
+if [ -z "$dest" ]; then
+    echo "Error: Destination cannot be empty."
+    log_action "Compression failed: Destination was empty."
     exit 1
 fi
 
