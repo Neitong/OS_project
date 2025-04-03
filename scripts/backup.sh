@@ -14,6 +14,13 @@ fi
 # Prompt for backup destination
 read -p "Enter the backup destination: " backup_dest
 
+# Check if the backup destination is empty
+if [ -z "$backup_dest" ]; then
+    echo "Error: Backup destination cannot be empty."
+    log_action "Backup failed: Backup destination was empty."
+    exit 1
+fi
+
 # Ensure backup directory exists
 mkdir -p "$backup_dest"
 
